@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Flex, Stack, Text } from "@chakra-ui/layout";
 import { EditIcon, EmailIcon, DeleteIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 const ContactCard = ({ contact, onOpenEdit, getContactId, deleteContact }) => {
   const updateHandler = (id) => {
@@ -22,13 +23,16 @@ const ContactCard = ({ contact, onOpenEdit, getContactId, deleteContact }) => {
         color="white"
         mb="4"
       >
-        <Flex align="center">
-          <EmailIcon w="30px" h="30px" mr="4"></EmailIcon>
-          <Stack>
-            <Text>{contact.name}</Text>
-            <Text>{contact.email}</Text>
-          </Stack>
-        </Flex>
+        <Link to={`/contacts/${contact.id}`}>
+          <Flex align="center">
+            <EmailIcon w="30px" h="30px" mr="4"></EmailIcon>
+            <Stack>
+              <Text>{contact.name}</Text>
+              <Text>{contact.email}</Text>
+            </Stack>
+          </Flex>
+        </Link>
+
         <Flex align="center">
           <EditIcon
             w="25px"

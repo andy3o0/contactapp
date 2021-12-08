@@ -37,7 +37,12 @@ const deleter = async (request, response, next) => {
   response.send(request.query);
 };
 
-const getByName = async (request, response, next) => {
-  response.send("get by id Name");
+const getById = async (request, response, next) => {
+  const { id } = request.params;
+  const result = await database.execute(
+    `SELECT * FROM contacts WHERE id = ${id};`
+  );
+  console.log(request.params);
+  response.send(result[0][0]);
 };
-module.exports = { getAllContacts, create, getByName, update, deleter };
+module.exports = { getAllContacts, create, getById, update, deleter };

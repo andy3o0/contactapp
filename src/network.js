@@ -45,3 +45,15 @@ export const deleteContactOnServer = async (id) => {
     console.log(error);
   }
 };
+
+export const getContactById = async (id) => {
+  try {
+    const { data } = await axios.get(
+      //   `${process.env.React_App_Server}/contacts`
+      `http://localhost:3001/contacts/${id}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
