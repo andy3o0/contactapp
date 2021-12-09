@@ -66,10 +66,12 @@ const App = () => {
 
   const updateContact = async (name, email, id) => {
     const data = await updateContactOnServer(name, email, id);
-    setContacts((prev) => [
-      ...contacts.filter((contact) => contact.id !== id),
-      { name, email, id },
-    ]);
+    if (contacts) {
+      setContacts((prev) => [
+        ...contacts.filter((contact) => contact.id !== id),
+        { name, email, id },
+      ]);
+    }
   };
 
   const deleteContact = async (id) => {
